@@ -6,22 +6,25 @@ const AddTodo = () => {
     // passing states
     const [notes, setNotes] = useState([])
     const [title, setTitle] = useState('')
-    // const [body, setBody] = useState('')
+
 
 
 
     // add words logic
     const addNote = (e) => {
         e.preventDefault()
+        // add the text in notes array
         setNotes([
             ...notes,
             { title },
 
         ])
+        // clear the input after the add
         setTitle('');
 
 
     }
+    // remove the list element
     const remove = (title) => {
         setNotes(notes.filter((note) => note.title !== title))
     }
@@ -41,6 +44,7 @@ const AddTodo = () => {
                     </div>
 
                 </form>
+                // after the click on add button the data come in the note array, after that map function showing the all add data dynamically
                 {notes.map((note) => (
                     <div className='todo-Container'>
                         <div key={note.title} className='todo'>
@@ -48,7 +52,7 @@ const AddTodo = () => {
 
                                 <li className='todo-item'> {note.title}</li>
                             </ul>
-
+                // when we click on the remove button this calls the remove function. this function filter the data and remove the selected list
                             <button className='btnRmv' onClick={() => remove(note.title)}>Remove </button>
                         </div>
                     </div>
